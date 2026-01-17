@@ -1,0 +1,58 @@
+# --- GENERAL & OS ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# --- CLIENT (Svelte/Node) ---
+client/node_modules/
+client/dist/
+client/.svelte-kit/
+client/build/
+client/.env
+client/.env.*
+!client/.env.example
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+client/package-lock.json
+
+# --- SERVER (Python/Flask) ---
+server/__pycache__/
+server/*.pyc
+server/instance/
+server/.pytest_cache/
+server/venv/
+server/env/
+server/.env
+server/.env.*
+!server/.env.example
+
+# --- AI MODELS & LARGE FILES (Safety) ---
+server/models/*.pth
+server/models/*.index
+server/models/*.onnx
+
+# Model Keras (h5) & Pickles
+server/models/chatbot_model.h5
+server/models/tokenizer.pickle
+server/models/label_encoder.pickle
+
+# Backup models
+server/modelsbackup/
+
+# --- GENERATED CONTENT ---
+server/audio_cache/
+server/temp_*.wav
+server/temp_*.mp3
+server/output_*.wav
+server/rvc_warmup_*.wav
+
+# --- DATASETS ---
+server/data/raw_data.txt
+server/data/intents.json
+server/data/response_templates.json
+
+.venv
+rvc-env
