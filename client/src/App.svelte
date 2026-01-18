@@ -179,11 +179,9 @@
             let a = 0, i_val = 0, u = 0, e = 0, o = 0;
 
             if (bass > mid && bass > treble) {
-
                 u = bass * 1.2;
                 o = bass * 0.8;
             } else if (treble > mid && treble > bass) {
-
                 i_val = treble * 1.2;
                 e = treble * 0.8;
             } else {
@@ -463,14 +461,23 @@
   ];
 </script>
 
-<main class="relative w-screen h-screen overflow-hidden bg-slate-900 text-white font-sans">
+<main class="relative w-screen h-screen overflow-hidden bg-black text-white font-sans">
   
   <div class="absolute inset-0 z-0">
+    <img 
+      src="/RoomV1.jpg" 
+      alt="Classroom Background" 
+      class="w-full h-full object-cover opacity-100 grayscale-0"
+    />
+    <div class="absolute inset-0 bg-slate-950/40 backdrop-blur-[1px]"></div>
+  </div>
+
+  <div class="absolute inset-0 z-1 pointer-events-none">
     <Avatar isSpeaking={isAiSpeaking} emotion={currentEmotion} mouthCues={mouthCues} />
   </div>
 
   <div class="absolute top-4 left-4 right-4 z-20 pointer-events-auto flex items-start justify-between gap-3">
-    <div class="inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-black/30 border border-white/10 backdrop-blur-md">
+    <div class="inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-md">
       <div class="w-2.5 h-2.5 rounded-full {isOnline ? 'bg-emerald-400' : 'bg-red-400'}"></div>
       <div class="text-xs text-white/80 leading-none">{isOnline ? "Online" : (lastError || "Offline")}</div>
       <div class="hidden sm:block text-white/30">•</div>
@@ -478,7 +485,7 @@
     </div>
 
     <div class="flex items-center gap-2">
-      <button on:click={resetChat} class="px-3 py-2 rounded-2xl bg-black/30 hover:bg-black/40 border border-white/10 backdrop-blur-md text-xs">
+      <button on:click={resetChat} class="px-3 py-2 rounded-2xl bg-black/40 hover:bg-black/50 border border-white/10 backdrop-blur-md text-xs transition-colors">
         Reset
       </button>
     </div>

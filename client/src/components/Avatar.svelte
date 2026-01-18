@@ -365,7 +365,7 @@
   onMount(() => {
     clock = new THREE.Clock();
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0f172a); 
+    //scene.background = new THREE.Color(0x0f172a); 
 
     camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 20.0);
     camera.position.set(0.0, 1.35, 1.1); 
@@ -373,11 +373,23 @@
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.423;
+
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     canvasContainer.appendChild(renderer.domElement);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
-    directionalLight.position.set(1.0, 1.0, 1.0).normalize();
-    scene.add(directionalLight);
+    const ambientLight = new THREE.AmbientLight(0x2d3652, 1.5); 
+    scene.add(ambientLight);
+
+    const mainLight = new THREE.DirectionalLight(0xfff0dd, 2.0);
+    mainLight.position.set(-1.5, 1.5, 1.0); 
+    mainLight.castShadow = true; 
+    mainLight.shadow.bias = -0.0001; 
+    mainLight.shadow.mapSize.width = 1024;
+    mainLight.shadow.mapSize.height = 1024;
+    scene.add(mainLight);
 
     const rimLight = new THREE.DirectionalLight(0x5555ff, 1.0);
     rimLight.position.set(-1.0, 0.5, -1.0).normalize();

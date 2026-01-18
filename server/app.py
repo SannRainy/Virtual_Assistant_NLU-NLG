@@ -301,7 +301,6 @@ def tts_endpoint():
                 payload["tts_text_normalized"] = None
         return jsonify(payload)
     except Exception as e:
-        safe_print(f"TTS error: {e}")
         _safe_log_exception("TTS error", e)
         return jsonify({"error": str(e)}), 500
 
