@@ -1,0 +1,62 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+
+# Core PyTorch stack (shared)
+torch==2.3.1
+torchvision==0.18.1
+torchaudio==2.3.1
+
+# Numerik & sains-data
+numpy<2.0
+scipy
+scikit-learn>=1.3.0
+matplotlib>=3.5.0
+
+# Server Flask & NLP klasik
+nltk==3.8.1
+flask
+flask-cors
+sastrawi
+colorama
+deep-translator
+
+# TensorFlow (CPU only, supaya tidak bentrok dengan CUDA PyTorch)
+tensorflow-cpu
+
+# STT / TTS dan audio stack server
+faster-whisper
+edge-tts
+SpeechRecognition
+tts==0.22.0
+soundfile
+librosa>=0.10.0
+ffmpeg-python
+praat-parselmouth
+pyworld
+torchcrepe
+pygame
+faiss-cpu==1.7.3
+
+# Style-Bert-VITS2: inference & serving
+accelerate
+cmudict
+cn2an
+g2p_en
+GPUtil
+gradio>=4.32
+jieba
+loguru
+num2words
+onnx
+onnxconverter-common
+onnxruntime
+onnxruntime-directml; sys_platform == 'win32'
+onnxruntime-gpu; sys_platform != 'darwin'
+onnxsim-prebuilt
+psutil
+pyannote.audio>=3.1.0
+pyopenjtalk-dict
+pypinyin
+pyworld-prebuilt
+tensorboard
+transformers<5.0.0
+umap-learn

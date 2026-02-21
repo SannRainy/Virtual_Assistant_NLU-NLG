@@ -9,21 +9,23 @@ scipy
 scikit-learn>=1.3.0
 matplotlib>=3.5.0
 
-nltk
+nltk==3.8.1
 flask
 flask-cors
 sastrawi
 colorama
-
+tensorflow-cpu
 faster-whisper
 edge-tts
 SpeechRecognition
+tts==0.22.0
 soundfile
-librosa
+librosa>=0.10.0
 ffmpeg-python
 praat-parselmouth
 pyworld
 torchcrepe
 
 pygame
-faiss-cpu==1.7.4
+faiss-cpu==1.7.3
+deep-translator
