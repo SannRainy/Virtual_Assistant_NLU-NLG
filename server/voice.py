@@ -54,9 +54,51 @@ class AnimeVoiceAssistant:
             "、",
         ]
 
+    def _apply_jp_domain_filter(self, text):
+        if not text:
+            return ""
+        replacements = {
+            "KRS": "KRS（履修登録）",
+            "KHS": "KHS（成績表）",
+            "SKS": "SKS（単位数）",
+            "IP": "IP（学期GPA）",
+            "IPK": "IPK（累計GPA）",
+            "UTS": "UTS（中間試験）",
+            "UAS": "UAS（期末試験）",
+            "UKT": "UKT（学費）",
+            "SPP": "SPP（授業料）",
+            "SIAKAD": "Siakad（学生ポータル）",
+            "SIM": "Siakad（学生ポータル）",
+            "SITA": "SITA（卒業論文システム）",
+            "ELMA": "ELMA（学内システム）",
+            "LPTIK": "LPTIK（ITセンター）",
+            "UNIPMA": "UNIPMA大学",
+            "UNIMA": "UNIPMA大学",
+            "KKN": "KKN（社会奉仕プログラム）",
+            "KIP-K": "KIP-K（奨学金）",
+            "KIPK": "KIP-K（奨学金）",
+            "TOEFL": "TOEFLテスト",
+            "ELPT": "ELPTテスト",
+            "BAA": "BAA（学務課）",
+            "BAAK": "BAA（学務課）",
+            "TU": "TU（事務）",
+            "LPPM": "LPPM（研究・奉仕機関）",
+        }
+        pattern = r"\b(KRS|KHS|SKS|IPK|IP|UTS|UAS|UKT|SPP|SIAKAD|SIM|SITA|ELMA|LPTIK|UNIPMA|UNIMA|KKN|KIP-K|KIPK|TOEFL|ELPT|BAA|BAAK|TU|LPPM)\b"
+
+        def replace(match):
+            token = match.group(0)
+            key = token.upper()
+            if key in replacements:
+                return replacements[key]
+            return token
+
+        return re.sub(pattern, replace, text, flags=re.IGNORECASE)
+
     def _translate_id_to_jp(self, text):
         try:
-            return self.translator.translate(text)
+            filtered = self._apply_jp_domain_filter(text)
+            return self.translator.translate(filtered)
         except:
             return text
 
